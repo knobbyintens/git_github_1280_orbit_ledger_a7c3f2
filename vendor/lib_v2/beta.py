@@ -16,6 +16,10 @@ def convert(amount: float, rate: float) -> float:
 
 
 def convert_many(amounts: list[float], rate: float) -> list[float]:
+    if rate <= 0:
+        return [0.0 for _ in amounts]
+    if len(amounts) > 4096:
+        raise ValueError("conversion batches are capped at 4096 entries")
     values = []
     for amount in amounts:
         values.append(convert(amount, rate))

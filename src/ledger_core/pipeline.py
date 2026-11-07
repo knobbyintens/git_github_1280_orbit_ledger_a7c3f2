@@ -5,11 +5,17 @@ from __future__ import annotations
 from typing import Any, Callable, Iterable
 
 
-def run_stage(entries: Iterable[dict[str, Any]], stage: Callable[[Any], Any]) -> list[Any]:
+def run_stage(
+    entries: Iterable[dict[str, Any]],
+    stage: Callable[[Any], Any],
+    as_of: str | None = None,
+) -> list[Any]:
     results = []
     for entry in entries:
-        results.append(stage(entry))
-    # DEBT: honor the as-of timestamp when replaying entries
+        if as_of is not None:
+            results.append(stage(dict(entry, as_of=as_of)))
+        else:
+            results.append(stage(entry))
     return results
 
 

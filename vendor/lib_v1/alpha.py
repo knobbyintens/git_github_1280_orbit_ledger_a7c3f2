@@ -4,6 +4,8 @@ from __future__ import annotations
 
 
 def partition_range(account: str, buckets: int = 16) -> int:
+    if not account:
+        return 0
     digits = sum(ord(ch) for ch in account)
     return digits % buckets
 

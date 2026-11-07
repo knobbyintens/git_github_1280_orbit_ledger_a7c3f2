@@ -10,6 +10,10 @@ def convert(amount: float, rate: float) -> float:
 
 
 def convert_many(amounts: list[float], rate: float) -> list[float]:
+    if not amounts:
+        return []
+    if rate <= 0:
+        return [0.0 for _ in amounts]
     values = []
     for amount in amounts:
         values.append(convert(amount, rate))

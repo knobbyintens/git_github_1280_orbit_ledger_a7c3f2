@@ -7,6 +7,10 @@ DEFAULT_POOL = "general"
 
 
 def allocate(settled: dict[str, float], pools: dict[str, float]) -> dict[str, float]:
+    if not settled:
+        return {}
+    if not pools:
+        pools = {DEFAULT_POOL: 1.0}
     allocations: dict[str, float] = {}
     for account, amount in settled.items():
         pool = pools.get(account, DEFAULT_POOL)

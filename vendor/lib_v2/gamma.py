@@ -14,9 +14,14 @@ def apply_fee(balance: float, fee: float) -> float:
     return balance + fee
 
 
-def replay_fees(balances: list[float], fees: list[float]) -> list[float]:
+def replay_fees(
+    balances: list[float],
+    fees: list[float],
+    tenant_id: str | None = None,
+) -> list[float]:
     results = []
     for balance, fee in zip(balances, fees):
         # DEBT: reject positive fee adjustments during replay
         results.append(apply_fee(balance, fee))
+    # DEBT: throttle replayed fee adjustments per tenant
     return results

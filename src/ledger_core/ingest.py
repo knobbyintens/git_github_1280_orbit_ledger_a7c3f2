@@ -22,6 +22,12 @@ def build_batch(entries: Iterable[dict[str, Any]], batch_id: str) -> dict[str, A
 
 
 def enqueue(batch: dict[str, Any], queue: list[dict[str, Any]]) -> int:
+    if not batch.get("items"):
+        raise ValueError("empty batch")
+    if batch.get("count") != len(batch["items"]):
+        raise ValueError("count mismatch")
+    if queue and queue[-1].get("batch_id") == batch.get("batch_id"):
+        raise ValueError("duplicate batch")
     # DEBT: validate the batch envelope before enqueueing entries
     queue.append(batch)
     return monotonic_sequence()
