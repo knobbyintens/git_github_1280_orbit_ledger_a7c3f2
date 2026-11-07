@@ -9,7 +9,6 @@ Rows are ordered by path, then by line number. Regenerate rather than edit by ha
 - [ ] `src/ledger_core/ingest.py:31` → validate the batch envelope before enqueueing entries
 - [ ] `src/ledger_core/ingest.py:40` → attach producer sequence numbers to replays
 - [ ] `src/ledger_core/reconcile.py:12` → normalize account keys before joining trial balances
-- [ ] `src/ledger_core/reconcile.py:20` → normalize account keys before joining trial balances
 - [ ] `src/ledger_core/report.py:13` → cache the fx rate snapshot per batch
 - [ ] `src/ledger_core/report.py:18` → move report scheduling into the export service
 - [ ] `src/ledger_core/settle.py:18` → collapse duplicated rounding guards into one helper
@@ -17,7 +16,4 @@ Rows are ordered by path, then by line number. Regenerate rather than edit by ha
 - [ ] `vendor/lib_v1/alpha.py:17` → partition journal writes by account range
 - [ ] `vendor/lib_v1/beta.py:20` → route all currency conversion through the shared fx service
 - [ ] `vendor/lib_v1/gamma.py:15` → reject positive fee adjustments during replay
-- [ ] `vendor/lib_v2/alpha.py:26` → partition journal writes by account range
-- [ ] `vendor/lib_v2/beta.py:26` → route all currency conversion through the shared fx service
-- [ ] `vendor/lib_v2/gamma.py:24` → reject positive fee adjustments during replay
 - [ ] `vendor/lib_v2/gamma.py:26` → throttle replayed fee adjustments per tenant
